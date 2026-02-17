@@ -1,4 +1,6 @@
 FROM node:20-slim
 WORKDIR /app
 COPY wrapper.js .
-CMD npx -y supergateway --stdio "node wrapper.js" --outputTransport streamableHttp --stateful --port 8080
+ENV PORT=8080
+EXPOSE 8080
+CMD ["sh", "-c", "npx -y supergateway --stdio 'node wrapper.js' --outputTransport streamableHttp --stateful --port ${PORT}"]
