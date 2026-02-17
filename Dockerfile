@@ -1,6 +1,6 @@
 FROM node:20-slim
 WORKDIR /app
+RUN npm install -g supergateway @notionhq/notion-mcp-server
 COPY wrapper.js .
-ENV PORT=8080
 EXPOSE 8080
-CMD ["sh", "-c", "npx -y supergateway --stdio 'node wrapper.js' --outputTransport streamableHttp --stateful --port ${PORT}"]
+CMD ["sh", "-c", "supergateway --stdio 'node wrapper.js' --outputTransport streamableHttp --stateful --port 8080"]
